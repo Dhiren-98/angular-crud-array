@@ -1,0 +1,74 @@
+<div class="container mt-4">
+    <div class="form">
+        <form>
+            <label for="name">Name: </label>
+            <input type="text" id="name" name='name' [(ngModel)]="studentDetails.name">
+            <label for="">Email: </label>
+            <input type="email" name='email' [(ngModel)]="studentDetails.email">
+            <label for="">Gender: </label>
+            Male &nbsp;<input type="radio" name='gen-der' value="male" [(ngModel)]="studentDetails.gender">
+            Female &nbsp;<input type="radio" name='gen-der' value="female" [(ngModel)]="studentDetails.gender">
+            Others &nbsp;<input type="radio" name='gen-der' value="others" [(ngModel)]="studentDetails.gender">
+
+
+            <label for="">Phone: </label>
+            <input type="tel" minlength="10" name='phone' [(ngModel)]="studentDetails.phone">
+            <label for="">age</label>
+            <input type="number" name='age' [(ngModel)]="studentDetails.age">
+            <label for="">Address</label>
+            <textarea name="" id="" cols="30" rows="5" name='address' [(ngModel)]="studentDetails.address"></textarea>
+            <label for="">State: </label>
+            <select name="State" id="state" name='state' [(ngModel)]="studentDetails.state">
+                <option value="Choose ">Choose The State</option>
+                <option value="West Bengal">West Bengal</option>
+                <option value="Bihar">Bihar</option>
+                <option value="Oddisha">Oddisha</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+            </select>
+            <label for="">Pincode: </label>
+            <input type="tel" name='pincode' [(ngModel)]="studentDetails.pincode"><br>
+            <button *ngIf="!isBtn" class="btn-action" type="button" (click)="getValue()">Submit</button>
+            <button *ngIf="isBtn" class="btn-action" type="button" (click)="updateValue()">Update</button>
+        </form>
+    </div>
+    <div>
+        <table *ngIf="tableData.length != 0">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th> Name</th>
+                    <th> Email</th>
+                    <th> Gender</th>
+                    <th> Phone</th>
+                    <th> age</th>
+                    <th> Address</th>
+                    <th> State</th>
+                    <th> Pincode</th>
+                    <th> Action</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of tableData; let i = index;">
+                    <td>{{i+1}}</td>
+                    <td>{{user.name}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.gender}}</td>
+                    <td>{{user.phone}}</td>
+                    <td>{{user.age}}</td>
+                    <td>{{user.address}}</td>
+                    <td>{{user.state}}</td>
+                    <td>{{user.pincode}}</td>
+                    <td>
+                        <button class="delete btn" (click)="deleteUser(i)">delete</button>
+                        <button class="update btn" (click)="updateUser(i, user)">update</button>
+                    </td>
+
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+
+</div>
